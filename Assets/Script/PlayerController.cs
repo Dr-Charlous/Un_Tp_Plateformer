@@ -34,16 +34,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _timerSinceJumpPressed;
     [SerializeField] float _TimeSinceGrounded;
     [SerializeField] float _coyoteTime;
-    [SerializeField] RaycastHit2D[] _hitResults;
     [SerializeField] float _slopeDetectOffset;
     [SerializeField] bool _isOnSlope;
     [SerializeField] Collider2D _collider;
     [SerializeField] PhysicsMaterial2D _physicsFriction;
     [SerializeField] PhysicsMaterial2D _physicsNoFriction;
-    [SerializeField] float[] directions;
     [SerializeField] Vector3 _offsetCollisionBox;
     [SerializeField] Vector3 _offsetToReplace;
     [SerializeField] Vector2 _collisionBox;
+
+    RaycastHit2D[] _hitResults = new RaycastHit2D[2];
+    float[] directions = new float[] { 1, -1 };
 
     private void Update()
     {
@@ -65,6 +66,12 @@ public class PlayerController : MonoBehaviour
         _inputs.y = Input.GetAxisRaw("Vertical");
 
         _inputJump = Input.GetKey(KeyCode.UpArrow);
+
+        if (_inputJump)
+        {
+            _timerSinceJumpPressed = 0;
+        }
+
     }
 
     void HandleMovements()
@@ -74,12 +81,14 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = Vector2.MoveTowards(velocity, wantedVelocity, _acceleration * Time.deltaTime);
     }
 
+    Vector2 _point;
+
     void HandleGrounded()
     {
         _TimeSinceGrounded += Time.deltaTime;
 
-        Vector2 point = transform.position + Vector3.up * _groundOffset;
-        bool currentGrounded = Physics2D.OverlapCircleNonAlloc(point, _groundRadius, _collidersGround, _GroundLayer) > 0;
+        _point = transform.position + Vector3.up * _groundOffset;
+        bool currentGrounded = Physics2D.OverlapCircleNonAlloc(_point, _groundRadius, _collidersGround, _GroundLayer) > 0;
 
         if (currentGrounded == false && _isGrounded)
         {
@@ -88,6 +97,15 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = currentGrounded;
     }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_point, _groundRadius);
+        Gizmos.color = Color.white;
+    }
+
 
     void HandleJump()
     {
@@ -121,10 +139,6 @@ public class PlayerController : MonoBehaviour
             _rb.gravityScale = _gravity;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _timerSinceJumpPressed = 0;
-        }
 
         _timerSinceJumpPressed += Time.deltaTime;
     }
