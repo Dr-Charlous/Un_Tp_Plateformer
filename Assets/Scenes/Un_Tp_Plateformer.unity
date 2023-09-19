@@ -322,11 +322,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &721635131 stripped
-CapsuleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3956739355301063644, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-  m_PrefabInstance: {fileID: 1977090983473652678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &787072590
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1164468597
 Rigidbody2D:
   serializedVersion: 4
@@ -1807,92 +1802,28 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _gravity
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _collider
-      value: 
-      objectReference: {fileID: 721635131}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _jumpForce
-      value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _walkSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _coyoteTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _timerNoJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _groundOffset
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _groundRadius
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _gravityUpJump
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _jumpInputTimer
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _physicsFriction
-      value: 
-      objectReference: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _velocityFallMin
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _physicsNoFriction
-      value: 
-      objectReference: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _slopeDetectOffset
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _GroundLayer.m_Bits
-      value: 64
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _timerMinBetweenJump
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: directions.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _timerSinceJumpPressed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: directions.Array.data[0]
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
-      propertyPath: _collidersGround.Array.size
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4169692143399363684, guid: abb7bd91e83db76469e989c5f0ad6a11, type: 3}
       propertyPath: _collidersGround.Array.data[0]

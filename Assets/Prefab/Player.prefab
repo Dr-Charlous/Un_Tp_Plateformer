@@ -166,13 +166,13 @@ MonoBehaviour:
   _rb: {fileID: 597117090186467556}
   _walkSpeed: 1.5
   _acceleration: 10
-  _groundOffset: 0.05
-  _groundRadius: 0.15
+  _groundOffset: -0.035
+  _groundRadius: 0.05
   _GroundLayer:
     serializedVersion: 2
     m_Bits: 64
   _timerMinBetweenJump: 0
-  _jumpForce: 2.6
+  _jumpForce: 2
   _velocityFallMin: -2
   _gravityUpJump: 0.4
   _gravity: 1.5
@@ -194,7 +194,3 @@ MonoBehaviour:
   _collider: {fileID: 3956739355301063644}
   _physicsFriction: {fileID: 6200000, guid: e04890dc7a529604582bfb42453c496c, type: 2}
   _physicsNoFriction: {fileID: 6200000, guid: 5543467fd0c479a4b84f2cc0ad815a4b, type: 2}
-  directions: []
-  _offsetCollisionBox: {x: 0, y: 0, z: 0}
-  _offsetToReplace: {x: 0, y: 0, z: 0}
-  _collisionBox: {x: 0, y: 0}

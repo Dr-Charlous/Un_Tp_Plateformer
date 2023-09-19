@@ -39,9 +39,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Collider2D _collider;
     [SerializeField] PhysicsMaterial2D _physicsFriction;
     [SerializeField] PhysicsMaterial2D _physicsNoFriction;
-    [SerializeField] Vector3 _offsetCollisionBox;
-    [SerializeField] Vector3 _offsetToReplace;
-    [SerializeField] Vector2 _collisionBox;
+    Vector3 _offsetCollisionBox;
+    Vector3 _offsetToReplace;
+    Vector2 _collisionBox;
 
     RaycastHit2D[] _hitResults = new RaycastHit2D[2];
     float[] directions = new float[] { 1, -1 };
@@ -81,14 +81,14 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = Vector2.MoveTowards(velocity, wantedVelocity, _acceleration * Time.deltaTime);
     }
 
-    Vector2 _point;
+    //Vector2 _point;
 
     void HandleGrounded()
     {
         _TimeSinceGrounded += Time.deltaTime;
 
-        _point = transform.position + Vector3.up * _groundOffset;
-        bool currentGrounded = Physics2D.OverlapCircleNonAlloc(_point, _groundRadius, _collidersGround, _GroundLayer) > 0;
+        Vector2 point = transform.position + Vector3.up * _groundOffset;
+        bool currentGrounded = Physics2D.OverlapCircleNonAlloc(point, _groundRadius, _collidersGround, _GroundLayer) > 0;
 
         if (currentGrounded == false && _isGrounded)
         {
@@ -99,23 +99,18 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_point, _groundRadius);
-        Gizmos.color = Color.white;
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(_point, _groundRadius);
+    //    Gizmos.color = Color.white;
+    //}
 
 
     void HandleJump()
     {
         _timerNoJump -= Time.deltaTime;
-
-        if (_inputJump && (_rb.velocity.y <= 0 || _isOnSlope) && (_isGrounded || _TimeSinceGrounded < _coyoteTime) && _timerNoJump <= 0 && _timerSinceJumpPressed < _jumpInputTimer)
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
-            _timerNoJump = _timerMinBetweenJump;
-        }
+        _timerSinceJumpPressed += Time.deltaTime;
 
         //Limite vitesse chute
         if (_rb.velocity.y < _velocityFallMin)
@@ -139,8 +134,11 @@ public class PlayerController : MonoBehaviour
             _rb.gravityScale = _gravity;
         }
 
-
-        _timerSinceJumpPressed += Time.deltaTime;
+        if (_inputJump && (_rb.velocity.y <= 0 || _isOnSlope) && (_isGrounded || _TimeSinceGrounded < _coyoteTime) && _timerNoJump <= 0 && _timerSinceJumpPressed < _jumpInputTimer)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+            _timerNoJump = _timerMinBetweenJump;
+        }
     }
 
     void HandleSlope()
